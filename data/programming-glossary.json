@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "attribution": "Ringkasan istilah disusun dengan bahasa sederhana berdasarkan dokumentasi resmi untuk tiap teknologi. Tautan sumber dicantumkan pada setiap istilah.",
+  "terms": [
+    {
+      "term": "API",
+      "aliases": ["application programming interface"],
+      "category": "Web Development",
+      "definition": "Kumpulan fitur dan aturan yang memungkinkan suatu program berinteraksi dengan program atau layanan lain.",
+      "simpleExplanation": "API seperti pintu dan aturan yang dipakai program untuk meminta layanan atau data dari program lain.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/API"
+    },
+    {
+      "term": "Array",
+      "aliases": [],
+      "category": "JavaScript",
+      "definition": "Objek JavaScript untuk menyimpan kumpulan nilai dalam urutan tertentu. Setiap nilai memiliki indeks yang dimulai dari 0.",
+      "simpleExplanation": "Array seperti daftar berurutan yang menyimpan banyak nilai dalam satu variabel.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Array"
+    },
+    {
+      "term": "Argument",
+      "aliases": [],
+      "category": "JavaScript",
+      "definition": "Nilai yang diberikan kepada fungsi ketika fungsi dipanggil.",
+      "simpleExplanation": "Argument adalah nilai nyata yang dikirim saat kita menjalankan fungsi.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Argument"
+    },
+    {
+      "term": "Asynchronous",
+      "aliases": ["asinkron"],
+      "category": "JavaScript",
+      "definition": "Pola kerja yang memungkinkan program melanjutkan pekerjaan lain saat menunggu suatu operasi selesai.",
+      "simpleExplanation": "Program tidak harus diam menunggu; ia bisa mengerjakan hal lain lalu memakai hasilnya ketika sudah siap.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Asynchronous"
+    },
+    {
+      "term": "Callback",
+      "aliases": ["callback function"],
+      "category": "JavaScript",
+      "definition": "Fungsi yang diberikan sebagai nilai ke fungsi lain, lalu dipanggil oleh fungsi tersebut untuk menjalankan suatu tindakan.",
+      "simpleExplanation": "Kita menitipkan sebuah fungsi kepada fungsi lain agar dijalankan pada waktu yang sesuai.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Callback_function"
+    },
+    {
+      "term": "Class",
+      "aliases": [],
+      "category": "JavaScript",
+      "definition": "Deklarasi yang menjadi pola untuk membuat objek dengan karakteristik dan perilaku tertentu.",
+      "simpleExplanation": "Class seperti cetakan yang dipakai untuk membuat objek dengan bentuk dasar serupa.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Class"
+    },
+    {
+      "term": "Closure",
+      "aliases": [],
+      "category": "JavaScript",
+      "definition": "Fungsi beserta aksesnya ke lingkungan leksikal tempat fungsi itu dibuat, termasuk variabel di cakupan luar.",
+      "simpleExplanation": "Fungsi dapat tetap mengingat dan memakai variabel dari tempat pembuatannya, bahkan setelah fungsi luar selesai.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Closure"
+    },
+    {
+      "term": "DOM",
+      "aliases": ["document object model"],
+      "category": "Web Development",
+      "definition": "API yang merepresentasikan dokumen HTML atau XML sebagai kumpulan node berbentuk pohon dan memungkinkan program berinteraksi dengannya.",
+      "simpleExplanation": "DOM adalah bentuk halaman web yang bisa dibaca dan diubah oleh JavaScript.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/DOM"
+    },
+    {
+      "term": "Event",
+      "aliases": [],
+      "category": "JavaScript / Web API",
+      "definition": "Sinyal bahwa suatu kejadian berlangsung, misalnya klik pengguna atau selesainya operasi tertentu.",
+      "simpleExplanation": "Event memberi tahu program bahwa sesuatu terjadi sehingga program dapat meresponsnya.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Event"
+    },
+    {
+      "term": "Function",
+      "aliases": ["fungsi"],
+      "category": "JavaScript",
+      "definition": "Bagian kode yang dapat dipanggil oleh kode lain atau dirinya sendiri; fungsi dapat menerima input dan mengembalikan nilai.",
+      "simpleExplanation": "Function adalah kumpulan instruksi yang bisa dipakai kembali untuk melakukan suatu tugas.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Function"
+    },
+    {
+      "term": "JavaScript",
+      "aliases": ["js"],
+      "category": "Bahasa pemrograman",
+      "definition": "Bahasa pemrograman yang banyak digunakan untuk membuat halaman web interaktif dan juga digunakan di lingkungan lain.",
+      "simpleExplanation": "JavaScript membuat program dapat merespons tindakan pengguna dan mengolah data di web.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/JavaScript"
+    },
+    {
+      "term": "Loop",
+      "aliases": ["iteration", "iterasi"],
+      "category": "JavaScript",
+      "definition": "Rangkaian instruksi yang dijalankan berulang sampai kondisi tertentu terpenuhi.",
+      "simpleExplanation": "Loop mengulang pekerjaan yang sama tanpa perlu menulis instruksinya berkali-kali.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Loop"
+    },
+    {
+      "term": "Method",
+      "aliases": ["metode"],
+      "category": "JavaScript",
+      "definition": "Fungsi yang menjadi properti dari sebuah objek.",
+      "simpleExplanation": "Method adalah fungsi yang melekat pada objek dan biasanya bekerja dengan data objek tersebut.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Method"
+    },
+    {
+      "term": "Module",
+      "aliases": ["modul"],
+      "category": "JavaScript",
+      "definition": "Unit kode yang memiliki cakupannya sendiri dan dapat membagikan bagian tertentu untuk digunakan oleh unit lain.",
+      "simpleExplanation": "Module membantu membagi program menjadi bagian-bagian yang lebih teratur dan dapat saling memakai.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+    },
+    {
+      "term": "Object",
+      "aliases": ["objek"],
+      "category": "JavaScript",
+      "definition": "Kumpulan properti yang menyimpan informasi sebagai pasangan kunci dan nilai.",
+      "simpleExplanation": "Object mengelompokkan beberapa informasi bernama dalam satu nilai.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Object"
+    },
+    {
+      "term": "Parameter",
+      "aliases": [],
+      "category": "JavaScript",
+      "definition": "Nama variabel yang ditulis pada definisi fungsi untuk menerima argument.",
+      "simpleExplanation": "Parameter adalah nama tempat nilai masukan akan diterima oleh fungsi.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Parameter"
+    },
+    {
+      "term": "Promise",
+      "aliases": [],
+      "category": "JavaScript",
+      "definition": "Objek yang mewakili hasil yang akan tersedia nanti dari operasi asynchronous, baik berhasil maupun gagal.",
+      "simpleExplanation": "Promise memberi tahu program bahwa hasil proses yang berjalan di latar akan datang kemudian.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Promise"
+    },
+    {
+      "term": "Runtime",
+      "aliases": ["runtime environment", "lingkungan runtime"],
+      "category": "JavaScript",
+      "definition": "Lingkungan yang menjalankan JavaScript dan menyediakan fasilitas tambahan agar kode dapat berinteraksi dengan dunia di luar bahasa inti.",
+      "simpleExplanation": "Runtime adalah tempat JavaScript dijalankan beserta fasilitas yang bisa digunakan program, seperti API browser atau Node.js.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Language_overview#language-and-runtime"
+    },
+    {
+      "term": "Scope",
+      "aliases": ["cakupan"],
+      "category": "JavaScript",
+      "definition": "Konteks tempat nilai dan ekspresi dapat dikenali atau diakses oleh kode.",
+      "simpleExplanation": "Scope menentukan bagian program mana yang boleh memakai suatu variabel.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
+    },
+    {
+      "term": "Synchronous",
+      "aliases": ["sinkron"],
+      "category": "JavaScript",
+      "definition": "Pola kerja ketika instruksi dijalankan berurutan dan langkah berikutnya menunggu langkah saat ini selesai.",
+      "simpleExplanation": "Program menyelesaikan satu langkah terlebih dahulu sebelum lanjut ke langkah berikutnya.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Synchronous"
+    },
+    {
+      "term": "Variable",
+      "aliases": ["variabel"],
+      "category": "JavaScript",
+      "definition": "Nama yang merujuk pada suatu nilai agar nilai itu dapat digunakan oleh program.",
+      "simpleExplanation": "Variable adalah nama yang dipakai untuk menyimpan atau merujuk nilai.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Glossary/Variable"
+    },
+    {
+      "term": "GET",
+      "aliases": ["HTTP GET"],
+      "caseSensitive": true,
+      "category": "HTTP Method",
+      "definition": "Metode HTTP untuk meminta representasi atau data dari suatu sumber di server.",
+      "simpleExplanation": "GET meminta server mengirim data yang diminta.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods#get"
+    },
+    {
+      "term": "POST",
+      "aliases": ["HTTP POST"],
+      "caseSensitive": true,
+      "category": "HTTP Method",
+      "definition": "Metode HTTP untuk mengirim data ke suatu sumber, yang dapat membuat perubahan pada server.",
+      "simpleExplanation": "POST mengirim data, misalnya data formulir, agar diproses server.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods#post"
+    },
+    {
+      "term": "PUT",
+      "aliases": ["HTTP PUT"],
+      "caseSensitive": true,
+      "category": "HTTP Method",
+      "definition": "Metode HTTP untuk membuat atau mengganti representasi suatu sumber dengan data dari request.",
+      "simpleExplanation": "PUT mengirim representasi baru untuk mengganti data pada sumber tujuan.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods#put"
+    },
+    {
+      "term": "DELETE",
+      "aliases": ["HTTP DELETE"],
+      "caseSensitive": true,
+      "category": "HTTP Method",
+      "definition": "Metode HTTP untuk menghapus sumber yang ditentukan pada server.",
+      "simpleExplanation": "DELETE meminta server menghapus sumber yang dituju.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods#delete"
+    },
+    {
+      "term": "HTTP",
+      "aliases": ["hypertext transfer protocol"],
+      "category": "Web Development",
+      "definition": "Protokol yang digunakan browser dan server web untuk bertukar pesan request dan response.",
+      "simpleExplanation": "HTTP mengatur cara browser meminta sumber dan cara server membalasnya.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+    },
+    {
+      "term": "Request",
+      "aliases": ["HTTP request"],
+      "category": "HTTP",
+      "definition": "Pesan yang dikirim client ke server untuk meminta tindakan atau sumber tertentu.",
+      "simpleExplanation": "Request adalah permintaan yang dikirim aplikasi, misalnya browser, ke server.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages"
+    },
+    {
+      "term": "Response",
+      "aliases": ["HTTP response"],
+      "category": "HTTP",
+      "definition": "Pesan balasan dari server setelah menerima dan memproses request client.",
+      "simpleExplanation": "Response adalah jawaban server yang dapat berisi status dan data.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages"
+    },
+    {
+      "term": "SELECT",
+      "aliases": ["SQL SELECT"],
+      "category": "SQL",
+      "definition": "Perintah SQL untuk mengambil baris atau nilai dari tabel maupun view.",
+      "simpleExplanation": "SELECT digunakan untuk membaca data yang ingin ditampilkan dari database.",
+      "sourceUrl": "https://www.postgresql.org/docs/current/sql-select.html"
+    },
+    {
+      "term": "INSERT",
+      "aliases": ["SQL INSERT"],
+      "category": "SQL",
+      "definition": "Perintah SQL untuk menambahkan baris baru ke dalam tabel.",
+      "simpleExplanation": "INSERT memasukkan data baru ke tabel database.",
+      "sourceUrl": "https://www.postgresql.org/docs/current/sql-insert.html"
+    },
+    {
+      "term": "UPDATE",
+      "aliases": ["SQL UPDATE"],
+      "category": "SQL",
+      "definition": "Perintah SQL untuk mengubah nilai pada baris yang dipilih dalam tabel.",
+      "simpleExplanation": "UPDATE memperbarui data yang sudah ada di database.",
+      "sourceUrl": "https://www.postgresql.org/docs/current/sql-update.html"
+    },
+    {
+      "term": "DELETE",
+      "aliases": ["SQL DELETE"],
+      "category": "SQL",
+      "definition": "Perintah SQL untuk menghapus baris dari tabel.",
+      "simpleExplanation": "DELETE menghapus baris yang sesuai dengan kondisi perintahnya.",
+      "sourceUrl": "https://www.postgresql.org/docs/current/sql-delete.html"
+    },
+    {
+      "term": "JOIN",
+      "aliases": ["SQL JOIN"],
+      "category": "SQL",
+      "definition": "Klausa SQL untuk menggabungkan baris dari dua sumber tabel berdasarkan hubungan atau kondisi tertentu.",
+      "simpleExplanation": "JOIN menyatukan data dari tabel yang saling berhubungan.",
+      "sourceUrl": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    {
+      "term": "Query",
+      "aliases": ["SQL query"],
+      "category": "SQL",
+      "definition": "Pernyataan yang dikirim ke sistem database untuk membaca atau mengolah data.",
+      "simpleExplanation": "Query adalah instruksi untuk meminta atau mengubah data di database.",
+      "sourceUrl": "https://www.postgresql.org/docs/current/sql.html"
+    },
+    {
+      "term": "List",
+      "aliases": [],
+      "category": "Python",
+      "definition": "Kumpulan nilai berurutan yang dapat diubah setelah dibuat.",
+      "simpleExplanation": "List menyimpan beberapa nilai dalam urutan tertentu dan isinya dapat diperbarui.",
+      "sourceUrl": "https://docs.python.org/3/tutorial/introduction.html#lists"
+    },
+    {
+      "term": "Dictionary",
+      "aliases": ["dict"],
+      "category": "Python",
+      "definition": "Kumpulan pasangan kunci dan nilai yang memungkinkan nilai dicari menggunakan kuncinya.",
+      "simpleExplanation": "Dictionary menyimpan data dengan label kunci agar nilai mudah ditemukan.",
+      "sourceUrl": "https://docs.python.org/3/tutorial/datastructures.html#dictionaries"
+    },
+    {
+      "term": "Tuple",
+      "aliases": [],
+      "category": "Python",
+      "definition": "Kumpulan nilai berurutan yang umumnya tidak dapat diubah setelah dibuat.",
+      "simpleExplanation": "Tuple mirip kumpulan berurutan, tetapi nilainya ditujukan untuk tetap.",
+      "sourceUrl": "https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences"
+    },
+    {
+      "term": "Function",
+      "aliases": ["fungsi"],
+      "category": "Python",
+      "definition": "Unit kode bernama yang dapat dipanggil dan dapat menerima parameter serta mengembalikan nilai.",
+      "simpleExplanation": "Function membungkus langkah kerja agar dapat dipanggil kembali saat dibutuhkan.",
+      "sourceUrl": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+    },
+    {
+      "term": "Array",
+      "aliases": [],
+      "category": "PHP",
+      "definition": "Struktur berurutan yang berfungsi sebagai map dan menghubungkan kunci dengan nilai.",
+      "simpleExplanation": "Array PHP dapat berperan sebagai daftar atau kumpulan data berkunci.",
+      "sourceUrl": "https://www.php.net/manual/en/language.types.array.php"
+    },
+    {
+      "term": "Function",
+      "aliases": ["fungsi"],
+      "category": "PHP",
+      "definition": "Blok kode bernama yang dapat dipanggil untuk menjalankan tugas dan menerima parameter.",
+      "simpleExplanation": "Function PHP mengelompokkan pekerjaan agar bisa dipanggil dari bagian program lain.",
+      "sourceUrl": "https://www.php.net/manual/en/functions.user-defined.php"
+    },
+    {
+      "term": "PHP Variable",
+      "aliases": ["$variable"],
+      "category": "PHP",
+      "definition": "Nama yang diawali tanda dolar dan digunakan untuk merujuk pada nilai dalam program PHP.",
+      "simpleExplanation": "Di PHP, tanda dolar menandai nama variabel.",
+      "sourceUrl": "https://www.php.net/manual/en/language.variables.basics.php"
+    },
+    {
+      "term": "Class",
+      "aliases": [],
+      "category": "Java",
+      "definition": "Deklarasi yang menjadi cetak biru untuk membuat objek beserta data dan perilakunya.",
+      "simpleExplanation": "Class Java menjelaskan struktur dan perilaku objek yang dibuat darinya.",
+      "sourceUrl": "https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html"
+    },
+    {
+      "term": "Object",
+      "aliases": [],
+      "category": "Java",
+      "definition": "Instans dari class yang memiliki keadaan melalui field dan perilaku melalui method.",
+      "simpleExplanation": "Object adalah hasil nyata yang dibuat berdasarkan class.",
+      "sourceUrl": "https://docs.oracle.com/javase/tutorial/java/javaOO/objects.html"
+    },
+    {
+      "term": "Method",
+      "aliases": [],
+      "category": "Java",
+      "definition": "Blok kode dalam class yang menjalankan operasi dan dapat menerima parameter serta mengembalikan nilai.",
+      "simpleExplanation": "Method adalah tindakan yang disediakan oleh class atau objek.",
+      "sourceUrl": "https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html"
+    },
+    {
+      "term": "Interface",
+      "aliases": [],
+      "category": "Java",
+      "definition": "Kontrak tipe yang menetapkan perilaku yang dapat diimplementasikan oleh class.",
+      "simpleExplanation": "Interface menyatakan kemampuan yang perlu disediakan oleh class yang mengimplementasikannya.",
+      "sourceUrl": "https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html"
+    },
+    {
+      "term": "Class",
+      "aliases": [],
+      "category": "C#",
+      "definition": "Tipe referensi yang mendefinisikan cetak biru untuk membuat objek dan anggota seperti field atau method.",
+      "simpleExplanation": "Class C# menjelaskan data dan perilaku yang dimiliki objek.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/classes"
+    },
+    {
+      "term": "Method",
+      "aliases": [],
+      "category": "C#",
+      "definition": "Blok pernyataan di dalam tipe yang dijalankan ketika dipanggil dan dapat menerima argumen.",
+      "simpleExplanation": "Method C# menjalankan suatu tindakan di dalam class, struct, atau interface.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods"
+    },
+    {
+      "term": "Delegate",
+      "aliases": [],
+      "category": "C#",
+      "definition": "Tipe yang merepresentasikan referensi ke method dengan daftar parameter dan tipe hasil tertentu.",
+      "simpleExplanation": "Delegate menyimpan referensi method agar method tersebut dapat dipanggil atau diteruskan.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/"
+    },
+    {
+      "term": "LINQ",
+      "aliases": ["language integrated query"],
+      "category": "C#",
+      "definition": "Kumpulan teknologi .NET untuk melakukan operasi query pada berbagai sumber data dengan pola yang konsisten.",
+      "simpleExplanation": "LINQ membantu mencari, memilih, dan mengolah data dari koleksi maupun sumber lain.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/dotnet/csharp/linq/"
+    }
+  ]
+}

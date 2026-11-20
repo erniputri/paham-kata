@@ -1,0 +1,58 @@
+﻿{
+    "manifest_version":  3,
+    "name":  "PahamKata",
+    "version":  "1.0.0",
+    "description":  "Your Personal Technical Vocabulary Assistant",
+    "permissions":  [
+                        "activeTab",
+                        "scripting",
+                        "storage"
+                    ],
+    "background":  {
+                       "service_worker":  "js/background/serviceWorker.js",
+                       "type":  "module"
+                   },
+    "host_permissions":  [
+                             "http://*/*",
+                             "https://*/*",
+                             "https://api.dictionaryapi.dev/*",
+                             "https://api.mymemory.translated.net/*"
+                         ],
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "http://*/*",
+                                                "https://*/*"
+                                            ],
+                                "js":  [
+                                           "js/features/selectionContent.js"
+                                       ],
+                                "run_at":  "document_idle"
+                            }
+                        ],
+    "web_accessible_resources":  [
+                                     {
+                                         "resources":  [
+                                                           "img/logo-bunga.png"
+                                                       ],
+                                         "matches":  [
+                                                         "http://*/*",
+                                                         "https://*/*"
+                                                     ]
+                                     }
+                                 ],
+    "icons":  {
+                  "16":  "img/icon16.png",
+                  "32":  "img/icon32.png",
+                  "48":  "img/icon48.png",
+                  "128":  "img/icon128.png"
+              },
+    "action":  {
+                   "default_popup":  "popup.html",
+                   "default_title":  "PahamKata â€“ Your Learning Companion",
+                   "default_icon":  {
+                                        "16":  "img/icon16.png",
+                                        "32":  "img/icon32.png"
+                                    }
+               }
+}

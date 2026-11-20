@@ -1,0 +1,278 @@
+﻿<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PahamKata</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <header class="header">
+        <div class="logo">
+          <img src="img/logo-bunga.png" alt="PahamKata Logo" class="logo-img" />
+
+          <div class="logo-text">
+            <h1>PahamKata</h1>
+            <p>Teman belajarmu untuk memahami istilah teknologi</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- SEARCH SECTION -->
+      <section class="search-section">
+        <label for="wordInput">Istilah apa yang kamu cari?</label>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="wordInput"
+            placeholder="Contoh: asynchronous, callback, runtime"
+          />
+
+          <button id="searchBtn">Cari</button>
+        </div>
+
+        <p class="search-hint">
+          Blok istilah, lalu klik ikon PahamKata untuk mencari
+          artinya.
+        </p>
+        <!-- <small class="privacy-note">
+          Saat mencari, kata atau teks pilihan dikirim ke Free Dictionary API;
+          definisinya dikirim ke MyMemory untuk diterjemahkan.
+        </small> -->
+        <label class="select-text-setting" for="selectTextToggle">
+          <input id="selectTextToggle" type="checkbox" checked />
+          <span>Select &amp; Click aktif</span>
+        </label>
+      </section>
+
+      <!-- SEARCH RESULT -->
+      <section class="result-section" id="resultSection">
+        <div class="result-header">
+          <h3>Hasil pencarian</h3>
+          <span class="status" id="statusBadge">Siap mencari</span>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <img
+            src="img/logo-bloom.png"
+            alt="Empty illustration"
+            class="empty-icon"
+          />
+
+          <p>Belum ada istilah yang dicari.</p>
+
+          <small> Yuk, cari istilah pertamamu! </small>
+        </div>
+
+        <div id="resultContent" hidden>
+          <h2 id="resultWord"></h2>
+          <p id="resultNotice" class="result-notice" role="status" hidden></p>
+
+          <div id="meaningTabs" class="meaning-tabs" role="tablist" aria-label="Kategori makna" hidden>
+            <button id="generalMeaningTab" class="meaning-tab" type="button" role="tab" aria-controls="generalMeaningPanel" aria-selected="false" tabindex="-1">Umum</button>
+            <button id="programmingMeaningTab" class="meaning-tab" type="button" role="tab" aria-controls="programmingMeaningPanel" aria-selected="false" tabindex="-1">Pemrograman</button>
+          </div>
+
+          <section id="generalMeaningPanel" class="meaning-panel" role="tabpanel" aria-labelledby="generalMeaningTab" hidden>
+            <div id="generalMeaningSection" class="meaning-card general-meaning">
+              <h4>Makna umum</h4>
+              <p id="generalPartOfSpeech" class="meaning-part-of-speech" hidden></p>
+              <p id="generalDefinition" class="meaning-definition"></p>
+              <p id="generalTranslation" class="meaning-translation"></p>
+            </div>
+          </section>
+
+          <section id="programmingMeaningPanel" class="meaning-panel" role="tabpanel" aria-labelledby="programmingMeaningTab" hidden>
+            <div id="programmingMeaningSection" class="meaning-card programming-meaning">
+              <h4>Makna pemrograman</h4>
+              <div id="programmingMeaningList" class="programming-meaning-list"></div>
+            </div>
+          </section>
+
+          <button id="saveBtn">
+            <img src="img/save-icon.png" alt="" class="save-icon" />
+            Simpan ke Glosarium
+          </button>
+        </div>
+      </section>
+
+      <!-- SEARCH HISTORY PAGE -->
+      <section id="searchHistorySection" class="search-history-section" hidden>
+        <div class="search-history-heading">
+          <h2>Riwayat pencarian</h2>
+          <button id="backHistoryBtn" type="button">Kembali</button>
+        </div>
+        <p id="searchHistoryStatus" class="search-history-status" role="status" hidden></p>
+        <ul id="searchHistoryList" class="search-history-list"></ul>
+        <p id="searchHistoryEmpty" class="search-history-empty" hidden>
+          Belum ada riwayat pencarian.
+        </p>
+        <button id="clearSearchHistoryBtn" class="clear-search-history" type="button" disabled>
+          Hapus semua riwayat
+        </button>
+      </section>
+
+      <!-- MY GLOSSARY -->
+      <section class="glossary-section" id="glossarySection" hidden>
+        <div class="glossary-title">
+          <div>
+            <h2>
+              <img
+                src="img/logo-bunga.png"
+                alt=""
+                class="glossary-heading-icon"
+              />
+              Glosarium Saya
+            </h2>
+            <p>Kumpulan istilah yang sudah kamu simpan.</p>
+          </div>
+
+          <button id="backBtn">Kembali</button>
+        </div>
+
+        <!-- GLOSSARY SUMMARY -->
+        <div class="glossary-summary">
+          <h2 id="glossaryCount">0</h2>
+          <p>Istilah tersimpan</p>
+        </div>
+
+        <!-- SEARCH GLOSSARY -->
+        <div class="glossary-category-tabs" role="group" aria-label="Kategori glosarium">
+          <button id="generalGlossaryCategory" class="glossary-category-tab" type="button" aria-pressed="true">
+            Makna Umum
+          </button>
+          <button id="programmingGlossaryCategory" class="glossary-category-tab" type="button" aria-pressed="false">
+            Makna Pemrograman
+          </button>
+        </div>
+        <div class="glossary-search">
+          <input
+            type="search"
+            id="glossarySearch"
+            placeholder="Cari istilah tersimpan..."
+          />
+        </div>
+
+        <!-- GLOSSARY LIST -->
+        <p id="glossaryDataWarning" class="glossary-data-warning" role="status" hidden>
+          Beberapa entri tidak dapat dibaca. Entri tersebut dilewati dan data tersimpan tetap aman.
+        </p>
+        <div id="glossaryList"></div>
+
+        <!-- EMPTY STATE -->
+        <div id="glossaryEmpty" hidden>
+          <p>Belum ada istilah tersimpan.</p>
+          <small>
+            Simpan istilah dari hasil pencarian untuk melihatnya di sini.
+          </small>
+        </div>
+
+        <div id="glossaryNoResults" hidden>
+          <p>Tidak ada istilah yang cocok.</p>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <nav class="footer-navigation" aria-label="Navigasi PahamKata">
+          <button id="historyBtn" class="open-history-btn" type="button">
+            <span>Riwayat Pencarian</span>
+            <span id="searchHistoryCount" class="search-history-count">0</span>
+          </button>
+          <button id="glossaryBtn" type="button">
+            <img src="img/logo-bunga.png" alt="" class="glossary-icon" />
+            <span>Glosarium Saya</span>
+          </button>
+        </nav>
+        <span class="footer-credit">Dibuat dengan ♥</span>
+      </footer>
+    </div>
+
+    <div id="deleteModal" class="delete-modal-backdrop" hidden>
+      <section
+        class="delete-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteModalTitle"
+        aria-describedby="deleteModalMessage"
+      >
+        <div class="delete-modal-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M3 6h18M8 6V4h8v2m2 0-1 14H7L6 6m4 4v6m4-6v6" />
+          </svg>
+        </div>
+        <h2 id="deleteModalTitle">Hapus istilah ini?</h2>
+        <p id="deleteModalMessage">
+          Hapus “<strong id="deleteTermName"></strong>” dari Glosarium Saya?
+        </p>
+        <p id="deleteModalError" class="delete-modal-error" role="alert" hidden>
+          Istilah gagal dihapus. Silakan coba lagi.
+        </p>
+        <div class="delete-modal-actions">
+          <button id="cancelDeleteBtn" class="cancel-delete-btn" type="button">Batal</button>
+          <button id="confirmDeleteBtn" class="confirm-delete-btn" type="button">Ya, hapus</button>
+        </div>
+      </section>
+    </div>
+    <div id="saveSuccessModal" class="delete-modal-backdrop" hidden>
+      <section
+        class="delete-modal save-success-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="saveSuccessTitle"
+        aria-describedby="saveSuccessMessage"
+      >
+        <div class="delete-modal-icon save-success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="m5 12 4 4L19 6" />
+          </svg>
+        </div>
+        <h2 id="saveSuccessTitle">Berhasil disimpan!</h2>
+        <p id="saveSuccessMessage">
+          Istilah berhasil ditambahkan ke Glosarium Saya. Yuk, terus kumpulkan kosakata barumu!
+        </p>
+        <div class="delete-modal-actions">
+          <button id="dismissSaveSuccessBtn" class="save-success-btn" type="button">
+            Oke
+          </button>
+        </div>
+      </section>
+    </div>
+    <div id="duplicateSaveModal" class="delete-modal-backdrop" hidden>
+      <section
+        class="delete-modal save-success-modal already-saved-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="duplicateSaveTitle"
+        aria-describedby="duplicateSaveMessage"
+      >
+        <div class="delete-modal-icon already-saved-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M6 3h12v18l-6-4-6 4V3z" />
+            <path d="m9 10 2 2 4-4" />
+          </svg>
+        </div>
+        <h2 id="duplicateSaveTitle">Sudah ada di glosarium!</h2>
+        <p id="duplicateSaveMessage">
+          Istilah ini sudah pernah kamu simpan. Coba cari istilah baru lainnya, yuk!
+        </p>
+        <div class="delete-modal-actions">
+          <button id="dismissDuplicateSaveBtn" class="save-success-btn" type="button">
+            Mengerti
+          </button>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
