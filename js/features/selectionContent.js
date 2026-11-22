@@ -179,6 +179,15 @@ function appendProgrammingMeanings(container, meanings) {
       simple.textContent = meaning.simpleExplanation;
       entry.appendChild(simple);
     }
+    if (meaning.sourceUrl) {
+      const source = document.createElement("a");
+      source.href = meaning.sourceUrl;
+      source.target = "_blank";
+      source.rel = "noopener noreferrer";
+      source.textContent = meaning.sourceName || "Sumber";
+      source.style.cssText = "display:inline-block;margin-top:6px;color:#617c60;font-size:11px";
+      entry.appendChild(source);
+    }
     if (index === 0) entry.style.marginTop = "0";
     container.appendChild(entry);
   });
@@ -252,7 +261,7 @@ async function lookupDefinition(term) {
   if (!enabled || searchPending || term !== lastTerm) return;
   searchPending = true;
   const requestVersion = ++lookupVersion;
-  showState(term, "Mencari arti...", "Menghubungi kamus dan glossary lokal.");
+  showState(term, "Mencari arti...", "Menghubungi sumber definisi.");
   try {
     const response = await chrome.runtime.sendMessage({
       type: "PAHAMKATA_QUICK_DEFINITION",

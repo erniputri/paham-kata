@@ -98,7 +98,7 @@ function renderSearchResult(currentWord, state) {
       source.href = meaning.sourceUrl;
       source.target = "_blank";
       source.rel = "noopener noreferrer";
-      source.textContent = "Sumber";
+      source.textContent = meaning.sourceName || "Sumber";
       entry.appendChild(source);
     }
     elements.programmingMeaningList.appendChild(entry);

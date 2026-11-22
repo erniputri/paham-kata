@@ -1,48 +1,8 @@
 import { lookupGeneralMeaning, SearchError } from "../api/dictionaryApi.js";
 import { translateDefinition } from "../api/translationApi.js";
+import { lookupProgrammingMeanings } from "../api/programming/programmingLookup.js";
 
 const MAX_PROGRAMMING_CONTEXTS = 3;
-let programmingGlossaryPromise = null;
-
-function normalizeTerm(value) {
-  return typeof value === "string"
-    ? value.trim().toLocaleLowerCase("en").replace(/[\s_-]+/g, " ")
-    : "";
-}
-
-// JSON yang membaca arti programing
-function loadProgrammingGlossary() {
-  if (!programmingGlossaryPromise) {
-    programmingGlossaryPromise = fetch(chrome.runtime.getURL("data/programming-glossary.json"))
-      .then((response) => {
-        if (!response.ok) throw new Error(`Glossary JSON returned ${response.status}.`);
-        return response.json();
-      })
-      .then((data) => {
-        if (!Array.isArray(data?.terms)) throw new Error("Glossary JSON has an invalid format.");
-        return data.terms;
-      })
-      .catch((error) => {
-        programmingGlossaryPromise = null;
-        throw error;
-      });
-  }
-  return programmingGlossaryPromise;
-}
-
-async function lookupProgrammingMeanings(word) {
-  const terms = await loadProgrammingGlossary();
-  const query = word.trim();
-  const normalizedWord = normalizeTerm(word);
-
-  return terms.filter((item) => {
-    if (!item || typeof item.term !== "string" || typeof item.definition !== "string") return false;
-    return [item.term, ...(Array.isArray(item.aliases) ? item.aliases : [])]
-      .some((candidate) => item.caseSensitive
-        ? typeof candidate === "string" && candidate.trim() === query
-        : normalizeTerm(candidate) === normalizedWord);
-  });
-}
 
 export async function searchMeanings(word) {
   const [generalResult, programmingResult] = await Promise.allSettled([
@@ -51,10 +11,14 @@ export async function searchMeanings(word) {
   ]);
 
   const generalMeaning = generalResult.status === "fulfilled" ? generalResult.value : null;
-  const programmingMeanings = programmingResult.status === "fulfilled" ? programmingResult.value : [];
+  const programmingLookup = programmingResult.status === "fulfilled"
+    ? programmingResult.value
+    : { meanings: [], contextsLimited: false, lookupErrors: [] };
+  const programmingMeanings = programmingLookup.meanings;
   const lookupErrors = [generalResult, programmingResult]
     .filter((result) => result.status === "rejected")
-    .map((result) => result.reason);
+    .map((result) => result.reason)
+    .concat(programmingLookup.lookupErrors);
 
   if (!generalMeaning && programmingMeanings.length === 0) {
     if (lookupErrors.length) throw lookupErrors[0];
@@ -77,6 +41,7 @@ export async function searchMeanings(word) {
     category: meaning.category || "Programming Concept",
     definition: meaning.definition,
     simpleExplanation: meaning.simpleExplanation || "",
+    sourceName: meaning.sourceName || "Dokumentasi",
     sourceUrl: meaning.sourceUrl || "",
     caseSensitive: Boolean(meaning.caseSensitive),
   }));
@@ -97,6 +62,6 @@ export async function searchMeanings(word) {
     },
     lookupErrors,
     translationUnavailable,
-    programmingContextsLimited: programmingMeanings.length > programmingData.length,
+    programmingContextsLimited: programmingLookup.contextsLimited,
   };
 }
