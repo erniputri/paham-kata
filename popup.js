@@ -17,6 +17,29 @@ import { getSelectedTextFromActiveTab } from "./js/features/selectText.js";
 
 let currentWord = null;
 let activeSearchId = 0;
+const LAST_SEARCH_RESULT_KEY = "lastSearchResult";
+
+function restoreSearchResult(savedResult, term) {
+  if (!savedResult || savedResult.term !== term || !savedResult.currentWord) return false;
+  const state = savedResult.state;
+  if (!state || !Array.isArray(state.lookupErrors)) return false;
+  currentWord = savedResult.currentWord;
+  searchUI.setSearchTerm(term);
+  searchUI.renderResult(currentWord, state);
+  return true;
+}
+
+function rememberSearchResult(term, result) {
+  if (!chrome.storage.session) return;
+  const state = {
+    lookupErrors: result.lookupErrors.map((error) => ({ kind: error?.kind || "error" })),
+    translationUnavailable: result.translationUnavailable,
+    programmingContextsLimited: result.programmingContextsLimited,
+  };
+  chrome.storage.session.set({
+    [LAST_SEARCH_RESULT_KEY]: { term, currentWord: result.currentWord, state },
+  }).catch((error) => console.warn("Last search result could not be saved:", error));
+}
 
 async function loadGlossary() {
   try {
@@ -96,6 +119,7 @@ async function searchWord() {
     if (searchId !== activeSearchId) return;
     currentWord = result.currentWord;
     searchUI.renderResult(currentWord, result);
+    rememberSearchResult(word, result);
   } catch (error) {
     if (searchId !== activeSearchId) return;
     currentWord = null;
@@ -125,7 +149,6 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
 });
 
 async function initializePopup() {
-  const input = document.getElementById("wordInput");
   const selectTextToggle = document.getElementById("selectTextToggle");
   const pageView = new URLSearchParams(window.location.search).get("view") === "tab";
   if (pageView) document.body.classList.add("extension-page");
@@ -140,6 +163,13 @@ async function initializePopup() {
   selectTextToggle.checked = settings.selectTextEnabled !== false;
 
   selectTextToggle.disabled = false;
+
+  let savedResult = null;
+  try {
+    savedResult = (await chrome.storage.session?.get(LAST_SEARCH_RESULT_KEY))?.[LAST_SEARCH_RESULT_KEY];
+  } catch (error) {
+    console.warn("Last search result could not be restored:", error);
+  }
 
   let pendingSelection = null;
   try {
@@ -163,24 +193,31 @@ async function initializePopup() {
     pendingSelection.expiresAt > Date.now();
 
   if (isFreshSelection) {
-    searchUI.setSearchTerm(selectedTerm);
-    await searchWord();
+    if (!restoreSearchResult(savedResult, selectedTerm)) {
+      searchUI.setSearchTerm(selectedTerm);
+      await searchWord();
+    }
     return;
   }
 
-  if (!input.value && typeof settings.lastManualSearchTerm === "string") {
-    searchUI.setSearchTerm(settings.lastManualSearchTerm);
+  if (!pageView && selectTextToggle.checked) {
+    try {
+      const selectedText = await getSelectedTextFromActiveTab();
+      if (selectedText) {
+        if (!restoreSearchResult(savedResult, selectedText)) {
+          searchUI.setSearchTerm(selectedText);
+          await searchWord();
+        }
+        return;
+      }
+    } catch (error) {
+      console.warn("Select & Click unavailable:", error);
+    }
   }
-  if (pageView || !selectTextToggle.checked) return;
 
-  try {
-    const selectedText = await getSelectedTextFromActiveTab();
-    if (!selectedText) return;
-    searchUI.setSearchTerm(selectedText);
-    await searchWord();
-  } catch (error) {
-    console.error("Select & Click Error:", error);
-    searchUI.showUnsupportedPage();
+  if (typeof savedResult?.term === "string" && restoreSearchResult(savedResult, savedResult.term)) return;
+  if (typeof settings.lastManualSearchTerm === "string") {
+    searchUI.setSearchTerm(settings.lastManualSearchTerm);
   }
 }
 document.getElementById("wordInput").addEventListener("input", (event) => {
