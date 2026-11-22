@@ -226,8 +226,8 @@ export function initializeSearchUI({ onSearch, onHistorySearch, onClearHistory, 
     },
     showSearching() {
       elements.resultContent.hidden = true;
-      elements.statusBadge.textContent = "Sedang mencariâ€¦";
-      setEmptyMessage("Sedang mencari istilah...", "Mohon tunggu sebentar.", "Sedang mencariâ€¦");
+      elements.statusBadge.textContent = "Sedang mencari";
+      setEmptyMessage("Sedang mencari istilah...", "Mohon tunggu sebentar.", "Sedang mencari");
     },
     showRequiredTerm() {
       elements.resultContent.hidden = true;

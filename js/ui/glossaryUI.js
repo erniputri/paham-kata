@@ -184,7 +184,7 @@ export function initializeGlossaryUI({ onOpen, onSearch, onDelete }) {
       console.error("Load Glossary Error:", error);
       if (error instanceof InvalidGlossaryDataError) {
         elements.glossaryList.replaceChildren();
-        elements.glossaryCount.textContent = "â€”";
+        elements.glossaryCount.textContent = "";
         elements.glossaryEmpty.hidden = true;
         elements.glossaryNoResults.hidden = true;
         elements.glossaryDataWarning.hidden = false;
