@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PahamKata</title>
+    <title>KnowByte</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
 
@@ -12,11 +12,11 @@
       <!-- HEADER -->
       <header class="header">
         <div class="logo">
-          <img src="img/logo-bunga.png" alt="PahamKata Logo" class="logo-img" />
+          <img src="img/logo-bunga.png" alt="KnowByte Logo" class="logo-img" />
 
           <div class="logo-text">
-            <h1>PahamKata</h1>
-            <p>Teman belajarmu untuk memahami istilah teknologi</p>
+            <h1>KnowByte</h1>
+            <p>Understand More, One Byte at a Time.</p>
           </div>
         </div>
       </header>
@@ -36,8 +36,7 @@
         </div>
 
         <p class="search-hint">
-          Blok istilah, lalu klik ikon PahamKata untuk mencari
-          artinya.
+          Blok istilah, lalu klik ikon KnowByte untuk mencari artinya.
         </p>
         <!-- <small class="privacy-note">
           Saat mencari, kata atau teks pilihan dikirim ke Free Dictionary API;
@@ -72,24 +71,75 @@
           <h2 id="resultWord"></h2>
           <p id="resultNotice" class="result-notice" role="status" hidden></p>
 
-          <div id="meaningTabs" class="meaning-tabs" role="tablist" aria-label="Kategori makna" hidden>
-            <button id="generalMeaningTab" class="meaning-tab" type="button" role="tab" aria-controls="generalMeaningPanel" aria-selected="false" tabindex="-1">Umum</button>
-            <button id="programmingMeaningTab" class="meaning-tab" type="button" role="tab" aria-controls="programmingMeaningPanel" aria-selected="false" tabindex="-1">Pemrograman</button>
+          <div
+            id="meaningTabs"
+            class="meaning-tabs"
+            role="tablist"
+            aria-label="Kategori makna"
+            hidden
+          >
+            <button
+              id="generalMeaningTab"
+              class="meaning-tab"
+              type="button"
+              role="tab"
+              aria-controls="generalMeaningPanel"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Umum
+            </button>
+            <button
+              id="programmingMeaningTab"
+              class="meaning-tab"
+              type="button"
+              role="tab"
+              aria-controls="programmingMeaningPanel"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Pemrograman
+            </button>
           </div>
 
-          <section id="generalMeaningPanel" class="meaning-panel" role="tabpanel" aria-labelledby="generalMeaningTab" hidden>
-            <div id="generalMeaningSection" class="meaning-card general-meaning">
+          <section
+            id="generalMeaningPanel"
+            class="meaning-panel"
+            role="tabpanel"
+            aria-labelledby="generalMeaningTab"
+            hidden
+          >
+            <div
+              id="generalMeaningSection"
+              class="meaning-card general-meaning"
+            >
               <h4>Makna umum</h4>
-              <p id="generalPartOfSpeech" class="meaning-part-of-speech" hidden></p>
+              <p
+                id="generalPartOfSpeech"
+                class="meaning-part-of-speech"
+                hidden
+              ></p>
               <p id="generalDefinition" class="meaning-definition"></p>
               <p id="generalTranslation" class="meaning-translation"></p>
             </div>
           </section>
 
-          <section id="programmingMeaningPanel" class="meaning-panel" role="tabpanel" aria-labelledby="programmingMeaningTab" hidden>
-            <div id="programmingMeaningSection" class="meaning-card programming-meaning">
+          <section
+            id="programmingMeaningPanel"
+            class="meaning-panel"
+            role="tabpanel"
+            aria-labelledby="programmingMeaningTab"
+            hidden
+          >
+            <div
+              id="programmingMeaningSection"
+              class="meaning-card programming-meaning"
+            >
               <h4>Makna pemrograman</h4>
-              <div id="programmingMeaningList" class="programming-meaning-list"></div>
+              <div
+                id="programmingMeaningList"
+                class="programming-meaning-list"
+              ></div>
             </div>
           </section>
 
@@ -106,12 +156,22 @@
           <h2>Riwayat pencarian</h2>
           <button id="backHistoryBtn" type="button">Kembali</button>
         </div>
-        <p id="searchHistoryStatus" class="search-history-status" role="status" hidden></p>
+        <p
+          id="searchHistoryStatus"
+          class="search-history-status"
+          role="status"
+          hidden
+        ></p>
         <ul id="searchHistoryList" class="search-history-list"></ul>
         <p id="searchHistoryEmpty" class="search-history-empty" hidden>
           Belum ada riwayat pencarian.
         </p>
-        <button id="clearSearchHistoryBtn" class="clear-search-history" type="button" disabled>
+        <button
+          id="clearSearchHistoryBtn"
+          class="clear-search-history"
+          type="button"
+          disabled
+        >
           Hapus semua riwayat
         </button>
       </section>
@@ -128,7 +188,7 @@
               />
               Glosarium Saya
             </h2>
-            <p>Kumpulan istilah yang sudah kamu simpan.</p>
+            <p>Kumpulan istilah yang tersimpan.</p>
           </div>
 
           <button id="backBtn">Kembali</button>
@@ -141,11 +201,25 @@
         </div>
 
         <!-- SEARCH GLOSSARY -->
-        <div class="glossary-category-tabs" role="group" aria-label="Kategori glosarium">
-          <button id="generalGlossaryCategory" class="glossary-category-tab" type="button" aria-pressed="true">
+        <div
+          class="glossary-category-tabs"
+          role="group"
+          aria-label="Kategori glosarium"
+        >
+          <button
+            id="generalGlossaryCategory"
+            class="glossary-category-tab"
+            type="button"
+            aria-pressed="true"
+          >
             Makna Umum
           </button>
-          <button id="programmingGlossaryCategory" class="glossary-category-tab" type="button" aria-pressed="false">
+          <button
+            id="programmingGlossaryCategory"
+            class="glossary-category-tab"
+            type="button"
+            aria-pressed="false"
+          >
             Makna Pemrograman
           </button>
         </div>
@@ -158,8 +232,14 @@
         </div>
 
         <!-- GLOSSARY LIST -->
-        <p id="glossaryDataWarning" class="glossary-data-warning" role="status" hidden>
-          Beberapa entri tidak dapat dibaca. Entri tersebut dilewati dan data tersimpan tetap aman.
+        <p
+          id="glossaryDataWarning"
+          class="glossary-data-warning"
+          role="status"
+          hidden
+        >
+          Beberapa entri tidak dapat dibaca. Entri tersebut dilewati dan data
+          tersimpan tetap aman.
         </p>
         <div id="glossaryList"></div>
 
@@ -172,13 +252,13 @@
         </div>
 
         <div id="glossaryNoResults" hidden>
-          <p>Tidak ada istilah yang cocok.</p>
+          <p>Tidak ada istilah yang sesuai</p>
         </div>
       </section>
 
       <!-- FOOTER -->
       <footer class="footer">
-        <nav class="footer-navigation" aria-label="Navigasi PahamKata">
+        <nav class="footer-navigation" aria-label="Navigasi KnowByte">
           <button id="historyBtn" class="open-history-btn" type="button">
             <span>Riwayat Pencarian</span>
             <span id="searchHistoryCount" class="search-history-count">0</span>
@@ -213,8 +293,16 @@
           Istilah gagal dihapus. Silakan coba lagi.
         </p>
         <div class="delete-modal-actions">
-          <button id="cancelDeleteBtn" class="cancel-delete-btn" type="button">Batal</button>
-          <button id="confirmDeleteBtn" class="confirm-delete-btn" type="button">Ya, hapus</button>
+          <button id="cancelDeleteBtn" class="cancel-delete-btn" type="button">
+            Batal
+          </button>
+          <button
+            id="confirmDeleteBtn"
+            class="confirm-delete-btn"
+            type="button"
+          >
+            Ya, hapus
+          </button>
         </div>
       </section>
     </div>
@@ -233,10 +321,15 @@
         </div>
         <h2 id="saveSuccessTitle">Berhasil disimpan!</h2>
         <p id="saveSuccessMessage">
-          Istilah berhasil ditambahkan ke Glosarium Saya. Yuk, terus kumpulkan kosakata barumu!
+          Istilah berhasil ditambahkan ke Glosarium Saya. Yuk, terus kumpulkan
+          kosakata barumu!
         </p>
         <div class="delete-modal-actions">
-          <button id="dismissSaveSuccessBtn" class="save-success-btn" type="button">
+          <button
+            id="dismissSaveSuccessBtn"
+            class="save-success-btn"
+            type="button"
+          >
             Oke
           </button>
         </div>
@@ -258,10 +351,15 @@
         </div>
         <h2 id="duplicateSaveTitle">Sudah ada di glosarium!</h2>
         <p id="duplicateSaveMessage">
-          Istilah ini sudah pernah kamu simpan. Coba cari istilah baru lainnya, yuk!
+          Istilah ini sudah pernah kamu simpan. Coba cari istilah baru lainnya,
+          yuk!
         </p>
         <div class="delete-modal-actions">
-          <button id="dismissDuplicateSaveBtn" class="save-success-btn" type="button">
+          <button
+            id="dismissDuplicateSaveBtn"
+            class="save-success-btn"
+            type="button"
+          >
             Mengerti
           </button>
         </div>
@@ -270,9 +368,3 @@
     <script type="module" src="popup.js"></script>
   </body>
 </html>
-
-
-
-
-
-

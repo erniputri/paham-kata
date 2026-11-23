@@ -47,8 +47,8 @@ body {
 }
 /* icon footer */
 .glossary-icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 26px;
   object-fit: contain;
   flex: 0 0 auto;
 }

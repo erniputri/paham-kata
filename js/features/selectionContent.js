@@ -49,7 +49,7 @@ function positionFloatingUI() {
 function ensureHost() {
   if (buttonHost) return;
   buttonHost = document.createElement("div");
-  buttonHost.setAttribute("aria-label", "PahamKata Quick Definition");
+  buttonHost.setAttribute("aria-label", "Knowbyte Quick Definition");
   buttonHost.style.cssText =
     "all:initial;position:fixed;top:0;left:0;z-index:2147483647;display:block;width:max-content;height:max-content;pointer-events:auto;";
   buttonShadow = buttonHost.attachShadow({ mode: "closed" });
@@ -94,7 +94,7 @@ function showActionButton(term) {
   const button = document.createElement("button");
   button.className = "action";
   button.type = "button";
-  button.textContent = "🌸 Lihat arti";
+  button.textContent = "Lihat arti";
   button.addEventListener("pointerdown", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -264,7 +264,7 @@ async function lookupDefinition(term) {
   showState(term, "Mencari arti...", "Menghubungi sumber definisi.");
   try {
     const response = await chrome.runtime.sendMessage({
-      type: "PAHAMKATA_QUICK_DEFINITION",
+      type: "KNOWBYTE_QUICK_DEFINITION",
       term,
     });
     if (requestVersion !== lookupVersion || term !== lastTerm || !buttonHost) return;

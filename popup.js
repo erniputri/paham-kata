@@ -235,11 +235,3 @@ loadSearchHistory()
   .then((history) => searchUI.renderHistory(history))
   .catch((error) => searchUI.showHistoryError(error));
 initializePopup();
-
-
-
-
-
-
-
-

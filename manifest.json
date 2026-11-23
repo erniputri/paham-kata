@@ -1,8 +1,8 @@
 ﻿{
-    "manifest_version":  3,
-    "name":  "PahamKata",
-    "version":  "1.0.0",
-    "description":  "Your Personal Technical Vocabulary Assistant",
+  "manifest_version": 3,
+  "name": "KnowByte",
+  "version": "1.0.0",
+  "description": "Your Personal Technology & Programming Vocabulary Assistant",
     "permissions":  [
                         "activeTab",
                         "scripting",
@@ -49,7 +49,7 @@
               },
     "action":  {
                    "default_popup":  "popup.html",
-                   "default_title":  "PahamKata “ Your Learning Companion",
+                  "default_title": "KnowByte – Understand More, One Byte at a Time.",
                    "default_icon":  {
                                         "16":  "img/icon16.png",
                                         "32":  "img/icon32.png"

@@ -196,6 +196,3 @@ export function initializeGlossaryUI({ onOpen, onSearch, onDelete }) {
     },
   };
 }
-
-
-

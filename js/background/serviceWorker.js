@@ -20,8 +20,8 @@ function supportedWebSender(sender) {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  const isTabSearch = message?.type === "PAHAMKATA_SEARCH_SELECTION";
-  const isQuickDefinition = message?.type === "PAHAMKATA_QUICK_DEFINITION";
+  const isTabSearch = message?.type === "KNOWBYTE_SEARCH_SELECTION";
+  const isQuickDefinition = message?.type === "KNOWBYTE_QUICK_DEFINITION";
   if (!isTabSearch && !isQuickDefinition) return undefined;
 
   (async () => {
