@@ -1,5 +1,6 @@
 let glossaryPromise = null;
 
+//sumber istilah programming//
 function sourceNameFor(url) {
   if (typeof url !== "string") return "Dokumentasi";
   if (url.includes("developer.mozilla.org")) return "MDN Web Docs";

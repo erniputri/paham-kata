@@ -19,7 +19,7 @@ function cleanTerm(rawValue) {
 }
 
 function removeFloatingUI() {
-  lookupVersion += 1;
+  lookupVersion += 1; //membtalkan request yg sedng berjalan//
   buttonHost?.remove();
   buttonHost = null;
   buttonShadow = null;
@@ -48,7 +48,7 @@ function positionFloatingUI() {
 
 function ensureHost() {
   if (buttonHost) return;
-  buttonHost = document.createElement("div");
+  buttonHost = document.createElement("div"); //melalui DOM//
   buttonHost.setAttribute("aria-label", "Knowbyte Quick Definition");
   buttonHost.style.cssText =
     "all:initial;position:fixed;top:0;left:0;z-index:2147483647;display:block;width:max-content;height:max-content;pointer-events:auto;";

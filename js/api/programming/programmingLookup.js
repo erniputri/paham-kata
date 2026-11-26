@@ -22,6 +22,7 @@ async function translateOrKeep(text) {
   }
 }
 
+//penghubung utama antara wikidata & wikipedia//
 async function buildExternalMeaning(word) {
   const concept = await lookupWikidataConcept(word);
   if (!concept) return null;
@@ -61,7 +62,7 @@ export async function lookupProgrammingMeanings(word) {
     buildExternalMeaning(word),
     lookupLocalProgrammingMeanings(word),
   ]);
-  const lookupErrors = [];
+  const lookupErrors = [];//mengumpulkan error//
   if (external.status === "rejected") lookupErrors.push(external.reason);
   if (local.status === "rejected") lookupErrors.push(local.reason);
 

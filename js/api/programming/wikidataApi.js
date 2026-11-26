@@ -7,7 +7,7 @@ const MAX_CANDIDATES = 10;
 const CACHE_TTL_MS = 15 * 60 * 1000;
 const CACHE_LIMIT = 30;
 const RATE_LIMIT_KEY = "wikidataRateLimitedUntil";
-const conceptCache = new Map();
+const conceptCache = new Map();//untuk menyimpan hasil wikidata sementara//
 let rateLimitedUntil = 0;
 
 async function getRateLimitUntil() {
@@ -49,7 +49,7 @@ async function fetchWikidata(url) {
   }
   const { response, data } = await fetchJsonWithTimeout(url, 7000);
   if (response.status === 429) {
-    rateLimitedUntil = Date.now() + 60 * 1000;
+    rateLimitedUntil = Date.now() + 60 * 1000; //agar aplikasi tdk terus mengirim request ktika layanan sedang di batasi//
     chrome.storage?.session?.set({ [RATE_LIMIT_KEY]: rateLimitedUntil }).catch((error) => {
       console.warn("Wikidata cooldown could not be saved:", error);
     });
@@ -115,3 +115,5 @@ export async function lookupWikidataConcept(word) {
   if (conceptCache.size > CACHE_LIMIT) conceptCache.delete(conceptCache.keys().next().value);
   return value;
 }
+//file ini mencari konsep teknologi melalui Wikidata, //
+// menyaring hasil agar lebih relevan, mengelola cache, dan mengatur pembatasan request.//

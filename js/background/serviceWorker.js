@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const isQuickDefinition = message?.type === "KNOWBYTE_QUICK_DEFINITION";
   if (!isTabSearch && !isQuickDefinition) return undefined;
 
-  (async () => {
+  (async () => { //iimediately Invoked function expression//
     if (!supportedWebSender(sender)) {
       sendResponse({ ok: false, reason: "unsupported-page" });
       return;
